@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+
+*{
+    font-family: 'Oswald', sans-serif;
+}
+
+html,body
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.banner
+{
+    background-image: url('https://cdn.pixabay.com/photo/2018/05/16/14/52/sewing-3405975_960_720.jpg');
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: table;
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+ 
+
+.banner__overlay
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+    text-align: center;
+    background-color: rgba(0,0,0,0.4);
+    animation: banner-in 2s;
+}
+
+.banner__container
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.banner__title
+{
+    font-size: 56px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    animation: opacity 3s;
+}
+.banner__text
+{
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 18px;
+    animation: opacity 3s;
+}
+
+.nav-bar
+{
+    position: relative;
+}
+.nav-bar ul
+{
+    margin-left: 50px;
+}
+.nav-bar ul li
+{
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 30px;
+    /* background-color: #000; */
+    cursor: pointer;
+}
+.nav-bar ul li a
+{
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(195, 241, 86);
+    font-weight: 500;
+     
+}
+/*--------------------------------
+ANIOMATION
+---------------------------------*/
+@-webkit-keyframes banner-in {
+    0% {  
+        background-color:rgba(0,0,0,1);
+    }
+    100% { 
+        background-color:rgba(0,0,0,0.5);
+    }
+}
+@-moz-keyframes banner-in {
+    0% {  
+        background-color:rgba(0,0,0,1);
+    }
+    100% { 
+        background-color:rgba(0,0,0,0.5);
+    }
+}
+@-o-keyframes banner-in {
+    0% {  
+        background-color:rgba(0,0,0,1);
+    }
+    100% { 
+        background-color:rgba(0,0,0,0.5);
+    }
+}
+
+@keyframes banner-in
+{
+    0% {  
+        background-color:rgba(0,0,0,1);
+    }
+    100% { 
+        background-color:rgba(0,0,0,0.5);
+    }   
+}
+
+
+
+@-webkit-keyframes opacity {
+    0% {  
+      opacity:0;
+    }
+    100% { 
+       opacity:1;
+    }
+  }
+  @-moz-keyframes opacity {
+    0% {  
+      opacity:0;
+    }
+    100% { 
+       opacity:1;
+    }
+  }
+  @-o-keyframes opacity {
+    0% {  
+      opacity:0;
+    }
+    100% { 
+       opacity:1;
+    }
+  }
+  @keyframes opacity {
+    0% {  
+      opacity:0;
+    }
+    100% { 
+       opacity:1;
+    }
+  }
+
+
+  
