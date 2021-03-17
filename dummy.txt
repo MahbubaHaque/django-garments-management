@@ -1,0 +1,4 @@
+winpty python manage.py createsuperuser
+laka@@85
+python manage.py runserver
+source venv/Scripts/activate
