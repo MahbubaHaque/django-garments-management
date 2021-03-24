@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #custom app
     'accounts',
+    'abc_garments'
+    
 ]
 
 MIDDLEWARE = [

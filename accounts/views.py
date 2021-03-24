@@ -17,6 +17,7 @@ def loginView(request):
                 auth.login(request,user)
                 messages.success(request,"You Loggedin Successfully")
                 return redirect('home')
+                
             else:
                 messages.error(request,"Please Provide Correct Data")
                 return redirect('login')
