@@ -10,7 +10,7 @@ class Employee(models.Model):
     salary=models.IntegerField()
     birth_date=models.DateField()
     phone=models.CharField(max_length=20)
-
+    supervisor=models.IntegerField(default=0)
     def __str__(self):
         return "{} {}".format(self.first_name,self.last_name)
 
@@ -43,4 +43,41 @@ class MadeProduct(models.Model):
     created=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "{} made {} products".format(emp_id.name,quantity)
+        return "{} made {} products".format(self.emp_id.name,self.quantity)
+
+
+class Materials(models.Model):
+    name=models.CharField(max_length=255)
+    status=models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+
+class MaterialsUsed(models.Model):
+    employee_id=models.ForeignKey(Employee,on_delete=models.CASCADE)
+    materials_id=models.ForeignKey(Materials,on_delete=models.CASCADE)
+    quantity=models.IntegerField()
+    created=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} used {} {}".format(self.employee_id.name,self.quantity,self.materials_id.name)
+
+
+class Attendance(models.Model):
+    employee=models.ForeignKey(Employee,on_delete=models.CASCADE)
+    delivery_date=models.DateField()
+
+    def __str__(self):
+        return self.employee.name
+
+
+class PartTimeWork(models.Model):
+    employee=models.ForeignKey(Employee,on_delete=models.CASCADE)
+    worked_hour=models.IntegerField()
+    worked_date=models.DateField()
+
+    def __str__(self):
+        return self.employee.name
+
+
