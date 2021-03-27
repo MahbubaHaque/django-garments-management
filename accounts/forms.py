@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-
+from .models import UserProfile
 class SignUpForm(UserCreationForm):
 
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -49,3 +49,20 @@ class UserLoginForm(forms.Form):
         self.fields['password'].widget.attrs.update({'class': 'form-control','placeholder': 'Enter Password'})
         
     
+
+class UpdateUserProfileForm(forms.ModelForm):
+
+    class Meta:
+        model=UserProfile
+        fields=['profession','age','address','facebook','twitter','phone','fax','image']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs.update({'class': 'form-control'})
+        self.fields['profession'].widget.attrs.update({'class': 'form-control','placeholder': 'Your Profession'})
+        self.fields['age'].widget.attrs.update({'class': 'form-control','placeholder': 'Your Age'})
+        self.fields['address'].widget.attrs.update({'class': 'form-control','placeholder': 'address'})
+        self.fields['facebook'].widget.attrs.update({'class': 'form-control','placeholder': 'www.facebook.com/alex'})
+        self.fields['twitter'].widget.attrs.update({'class': 'form-control','placeholder': 'www.twitter.com/alex'})
+        self.fields['phone'].widget.attrs.update({'class': 'form-control','placeholder': 'Your phone no'})
+        self.fields['fax'].widget.attrs.update({'class': 'form-control','placeholder': 'Your fax no'})

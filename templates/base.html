@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'custom/css/base.css' %}">
     {% block CSS %}
@@ -30,10 +31,10 @@
                 <div class="nav-bar">
                     <ul class="mt-5">
                         <li><a href="{% url 'home'%}">Home</a></li>
-                        <li><a href="#">Our Work</a></li>
+                        <li><a href="{% url 'products' %}">Products</a></li>
                         <li><a href="#">Contact</a></li>
                         {% if user.is_authenticated %}
-                        <li><strong><a href=""><i class="fa fa-user"></i>{{user.username}}</a></strong></li>
+                        <li><strong><a href="{% url 'profile' user.id%}"><i class="fa fa-user"></i>{{user.username}}</a></strong></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                         {%else %}
                         <li><a href="{% url 'login' %}">Login</a></li>

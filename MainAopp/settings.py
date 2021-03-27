@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #custom app
     'accounts',
-    'abc_garments'
+    'abc_garments',
+    #third party apps
+    'django_cleanup',
     
 ]
 
@@ -124,3 +126,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,"static"),
 )
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+MEDIA_URL='/media/'
