@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'custom/css/products.css' %}"> 
+{% endblock CSS %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="product-card">
+                <div class="badge">Top Sell</div>
+                <div class="product-tumb">
+                  <img src="../..{{ product.image.url }}" alt="cloth">
+                </div>
+                <div class="product-details">
+                  <span class="product-catagory">{{ product.name }}</span>
+                  <h4><a href="">WoW ki sundor jama</a></h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+                    <div class="product-bottom-details">
+                        <div class="product-price"><small>$96.00</small>$ {{product.price}}</div>
+                        <div class="product-links">
+                            <form class="form-group" method="POST">
+                                {% csrf_token %}
+                                <label for="formGroupExampleInput">Total Quantity</label>
+                                <input type="number" class="form-control mb-3" required name="quantity" id="formGroupExampleInput" placeholder="Enter quantity">
+                                <button class="btn btn-sm bg-success" ><i class="fa fa-shopping-cart"></i> Confirm</button>
+                            </form>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

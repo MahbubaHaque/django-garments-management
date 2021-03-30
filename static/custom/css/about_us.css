@@ -1,0 +1,78 @@
+
+.about-us
+{
+    background-image: url('https://cdn.pixabay.com/photo/2018/05/16/14/52/sewing-3405975_960_720.jpg');
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.about h5
+{
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 5px;
+}
+
+.about h6
+{
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.about hr
+{
+	width: 40px;
+	margin-bottom: 20px;
+}
+
+.about .card
+{
+	text-align: center;
+}
+
+
+
+.contact .col
+{
+	margin-bottom: 24px;
+}
+
+.contact h5
+{
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+}
+
+.contact h6
+{
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 45px;
+}
+
+.contact hr
+{
+	width: 40px;
+	margin-bottom: 45px;
+}
+
+.contact .contact-holder
+{
+	padding-left: 40px;
+	text-align: left;
+}
+
+.contact .contact-holder h6
+{
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.contact .contact-holder p
+{
+	margin-bottom: 30px;
+}

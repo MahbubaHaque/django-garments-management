@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'custom/css/about_us.css' %}"> 
+{% endblock CSS %}
+
+
+{% block content %}
+<section class="about-us">
+<div class="container about">
+    <h5 class="mt">about us</h5>
+    <h6>let  introduce about us</h6>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h6>Story</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       
+      </div>
+    </div>
+</div>
+
+<div class="container contact">
+    <h5>contact</h5>
+    <h6>get in touch with us</h6>
+    <hr>
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <div class="row">
+          <form class="form-group col s12" method="POST">
+			  {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s6">
+                <label for="first_name">First Name</label>
+                <input class="form-control" id="first_name" name="first_name" type="text" placeholder="first name"  required>
+              </div>
+              <div class="input-field col s6"> 
+				<label for="last_name">Last Name</label>
+                <input class="form-control" id="last_name" name="last_name" type="text" placeholder="last name"  required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+				<label for="email">E-Mail</label>
+                <input class="form-control" id="email" name="email" type="email" placeholder="your email"  required>
+              </div>
+            </div>
+            <textarea name="message" class="form-control" class="materialize-textarea" placeholder="Your Message" required></textarea>
+            <button class="btn btn-outline-info mt-2" type="submit" name="action">Submit
+              <i class="mdi-content-send right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col s12 m6 l6 contact-holder">
+        <h6 class="mdi-action-home">Address</h6>
+        <p>Road:2,Flot:B Farmgate , Dhaka,Bangladesh</p>
+        <h6 class="mdi-hardware-phone-android">Phone Number</h6>
+        <p>+91 9912776151</p>
+        <h6 class="mdi-action-open-in-browser">Website</h6>
+        <p>abc-garments.com</p>
+      </div>
+    </div>
+</div>
+
+</section>
+{% endblock content %}

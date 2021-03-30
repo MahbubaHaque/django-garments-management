@@ -75,8 +75,7 @@ def userProfile(request,id=None):
     
     context={}
     if user.is_superuser:
-        messages.error(request,"You have to be customer")
-        return redirect('home')
+        return render(request,'admin/base_admin.html',context)
     else:
         profile=UserProfile.objects.get(customer=user)
         context['id']=id

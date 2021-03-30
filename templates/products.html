@@ -8,22 +8,22 @@
 {%block content%}
 <div class="container">
     <div class="row">
-        {% for i in '0123456789'|make_list %}
+        
+        {% for product in products %}
         <div class="col-md-4">
             <div class="product-card">
                 <div class="badge">Top Sell</div>
                 <div class="product-tumb">
-                  <img src="https://www.pngkey.com/png/detail/114-1146632_summer-clothes-for-women-png-image-background-sleeveless.png" alt="cloth">
+                  <img src="..{{ product.image.url }}" alt="cloth">
                 </div>
                 <div class="product-details">
-                  <span class="product-catagory">Women's cloth</span>
-                  <h4><a href="">Lorem ipsum dolor sit amet.</a></h4>
+                  <span class="product-catagory">{{product.name}}</span>
+                  <h4><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, corrupti!</a></h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
                     <div class="product-bottom-details">
-                        <div class="product-price"><small>$96.00</small>$230.99</div>
+                        <div class="product-price"><small>$96.00</small>${{product.price}}</div>
                         <div class="product-links">
-                        <a class="btn btn-sm bg-info"  href=""><i class="fa fa-heart"></i>Details</a>
-                        <a class="btn btn-sm bg-success" href=""><i class="fa fa-shopping-cart"></i> Buy</a>
+                        <a class="btn btn-sm bg-success" href="{% url 'buy_product' product.id %}"><i class="fa fa-shopping-cart"></i> Buy</a>
                         </div>
                     </div>
                 </div>

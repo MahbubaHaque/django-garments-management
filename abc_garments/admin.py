@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Product,Delivery,Employee,MadeProduct,Materials,MaterialsUsed,Attendance,PartTimeWork
+from .models import (Product,Delivery,Employee,MadeProduct,Materials,
+    MaterialsUsed,Attendance,PartTimeWork,Query)
 # Register your models here.
 admin.site.site_header = "ABC garments"
 
@@ -13,3 +14,4 @@ admin.site.register(Materials)
 admin.site.register(MaterialsUsed)
 admin.site.register(Attendance)
 admin.site.register(PartTimeWork)
+admin.site.register(Query)
