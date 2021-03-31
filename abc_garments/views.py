@@ -45,3 +45,24 @@ def about(request):
         return redirect('home')
     else:
         return render(request,'about_us.html')
+
+
+
+
+@login_required
+def allOrders(request):
+    context={}
+    orders=Delivery.objects.all()
+    context['orders']=orders
+    return render(request,'admin/all_orders.html',context)
+
+@login_required
+def deleteOrder(request,id=None):
+    order=Delivery.objects.get(pk=id)
+    order.delete()
+    messages.warning(request,"This Order deleted successfully")
+    return redirect('all_orders')
+
+@login_required
+def allEmployee(request):
+    return render(request,'admin/all_employee.html')

@@ -21,35 +21,42 @@
 			<a class="navbar-brand" href="{% url 'home' %}">ABC garments</a>
 		  </div>
 		</div>
-	  </nav>
-  <nav class="navbar-primary">
-	<a href="#" class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
-	<ul class="navbar-primary-menu">
-	  <li>
-		<a href="#"><i class="fa fa-users"> </i> <span class="nav-label">Employee</span></a>
-		<a href="#"> <i class="fa fa-sitemap"> </i> <span class="nav-label">Garments Material</span></a>
-		<a href="#"> <i class="fa fa-address-card"></i> <span class="nav-label">Attendence</span></a>
-		<a href="#">  <i class="fa fa-envelope"> </i> </span><span class="nav-label">Notification</span></a>
-		<a href="#"> <i class="fa fa-cart-plus"> </i> </span><span class="nav-label">Order</span></a>
-	  </li>
-	</ul>
-  </nav>
+	</nav>
+  <div class="row">
 
-  	{% block content %}
-	<div class="main-content">
-	<h1> I am the main content </h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint assumenda quae aliquid voluptatibus quia, ea, ad natus magni repellat earum, culpa iure tempore. Enim dolor eaque minima voluptas ducimus?</p>
+	<div class="col-md-2">
+		<nav class="navbar-primary">
+		<a href="#" class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
+			<ul class="navbar-primary-menu">
+				<li>
+				<a href="{% url 'all_employee' %}"><i class="fa fa-users"> </i> <span class="nav-label">All Employee</span></a>
+				<a href="#"> <i class="fa fa-sitemap"> </i> <span class="nav-label">Garments Material</span></a>
+				<a href="#"> <i class="fa fa-address-card"></i> <span class="nav-label">Attendence</span></a>
+				<a href="#">  <i class="fa fa-envelope"> </i> </span><span class="nav-label">Notification</span></a>
+				<a href="{% url 'all_orders' %}"> <i class="fa fa-cart-plus"> </i> </span><span class="nav-label">Order</span></a>
+				</li>
+			</ul>
+		</nav>
 	</div>
-	{% endblock content %}
+	<div class="col-md-10">
+		{% block content %}
+		<div class="main-content">
+		<h1> I am the main content </h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint assumenda quae aliquid voluptatibus quia, ea, ad natus magni repellat earum, culpa iure tempore. Enim dolor eaque minima voluptas ducimus?</p>
+		</div>
+		{% endblock content %}   
+	</div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <p class="mt-4 text-center footer-text">Developed By<strong> Laka </strong> &copy; 2021 </p>
+        <p class="mt-4 text-center footer-text">Developed By<strong> Laka</strong> &copy; 2021 </p>
       </div>
     </div>
   </div>
     <!-- Optional JavaScript; choose one of the two! -->
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

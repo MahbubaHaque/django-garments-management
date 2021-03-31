@@ -1,0 +1,86 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'custom/css/datatable.css' %}">
+{% endblock CSS%}
+{% block content %}
+<div class="container">
+    {% if messages %}
+    
+        {% for message in messages %}
+
+        <div class="alert alert-success text-center messages" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>All <b>Employees</b></h2>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Salary</th>
+                        <th>Birthdate</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in '0123456789'|make_list %}
+                    <tr>
+                        <td>Mohammad</td>
+                        <td>Azim</td>
+                        <td>50,000</td>
+                        <td>20 Jan 1998</td>
+                        <td> +85128555</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Are You sure to delete this order ?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                                <a href=""><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!-- Button trigger modal -->
+
+  
+
+
+</div>
+{% endblock %}
+
+
+{% block JS%}
+{% endblock JS %}
