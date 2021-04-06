@@ -1,0 +1,39 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block CSS %}
+{% endblock CSS%}
+
+{% block content %}
+<div class="container signup-section">
+    <div class="row">
+        <div class="col-md-6 offset-md-3"> 
+          {% if messages %}
+            {% for message in messages %}
+        
+              <div class="alert alert-{{message.tags}} text-center messages" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+    </div>
+
+    <div class="row" >
+      <div class="col-md-4 offset-md-4">
+          <h2 class="text-center">Add Employee</h2>
+          <form class="form-group container signup-form" method="post">
+              {% csrf_token %}
+          
+              {% for field in form %}
+              <label>{{ field.label }}</label> 
+              <br>
+                {{ field }} 
+              <br>  
+              {% endfor %}
+              <button class="btn btn-info">Add</button>
+            </form>   
+      </div>
+
+    </div> 
+</div>
+{% endblock content %}

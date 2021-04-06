@@ -16,9 +16,8 @@ class Employee(models.Model):
     first_name=models.CharField(max_length=255)
     last_name=models.CharField(max_length=255)
     salary=models.IntegerField()
-    birth_date=models.DateField()
     phone=models.CharField(max_length=20)
-    supervisor=models.IntegerField(default=0)
+    supervisor=models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return "{} {}".format(self.first_name,self.last_name)
 
@@ -79,10 +78,11 @@ class MaterialsUsed(models.Model):
 
 class Attendance(models.Model):
     employee=models.ForeignKey(Employee,on_delete=models.CASCADE)
-    delivery_date=models.DateField()
+    is_present=models.BooleanField(default=False)
+    attendence_date=models.DateField()
 
     def __str__(self):
-        return self.employee.name
+        return "{} Date {}".format(self.employee.first_name,self.attendence_date)
 
 
 class PartTimeWork(models.Model):
@@ -102,3 +102,10 @@ class Query(models.Model):
 
     def __str__(self):
         return "query from {} {}".format(self.first_name,self.last_name)
+
+class Notification(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    message=models.TextField()
+
+    def __str__(self):
+        return self.user.username

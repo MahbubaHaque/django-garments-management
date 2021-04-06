@@ -5,15 +5,6 @@
 {% endblock CSS%}
 {% block content %}
 <div class="container">
-    {% if messages %}
-    
-        {% for message in messages %}
-
-        <div class="alert alert-success text-center messages" role="alert">
-            {{ message }}
-        </div>
-        {% endfor %}
-    {% endif %}
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -29,19 +20,17 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Salary</th>
-                        <th>Birthdate</th>
                         <th>Phone</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in '0123456789'|make_list %}
+                    {% for employee in employees %}
                     <tr>
-                        <td>Mohammad</td>
-                        <td>Azim</td>
-                        <td>50,000</td>
-                        <td>20 Jan 1998</td>
-                        <td> +85128555</td>
+                        <td>{{employee.first_name}}</td>
+                        <td>{{employee.last_name}}</td>
+                        <td>{{employee.salary}}</td>
+                        <td>{{employee.phone}}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Delete
@@ -61,7 +50,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancle</button>
-                                <a href=""><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+                                <a href="{% url 'delete_employee' employee.id %}"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
                             </div>
                         </div>
                         </div>

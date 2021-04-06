@@ -1,0 +1,31 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block CSS %}
+{% endblock CSS%}
+
+{% block content %}
+<div class="container">
+    <div class="row" >
+        <div class="col-md-4 offset-md-4">
+            <h2 class="text-center">Send Notification</h2>
+            <form class="form-group " method="POST">
+                {% csrf_token %}
+            
+                {% for field in form %}
+                <label>{{ field.label }}</label> 
+                <br>
+                  {{ field }} 
+                <br>  
+                {% endfor %}
+                <button class="btn btn-info">Send</button>
+              </form>   
+        </div>
+  
+      </div> 
+</div>
+{% endblock %}
+
+
+{% block JS%}
+{% endblock JS %}

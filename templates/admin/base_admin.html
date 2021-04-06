@@ -15,6 +15,15 @@
     <title>ABC Garments</title>
   </head>
   <body>
+	{% if messages %}
+	
+		{% for message in messages %}
+
+		<div class="alert alert-success text-center messages" role="alert">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
 	<nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
 		<div class="container-fluid">
 		  <div class="navbar-header">
@@ -29,10 +38,11 @@
 		<a href="#" class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
 			<ul class="navbar-primary-menu">
 				<li>
+				<a href="{% url 'add_employee' %}"><i class="fa fa-users"> </i> <span class="nav-label">Add Employee</span></a>
 				<a href="{% url 'all_employee' %}"><i class="fa fa-users"> </i> <span class="nav-label">All Employee</span></a>
 				<a href="#"> <i class="fa fa-sitemap"> </i> <span class="nav-label">Garments Material</span></a>
-				<a href="#"> <i class="fa fa-address-card"></i> <span class="nav-label">Attendence</span></a>
-				<a href="#">  <i class="fa fa-envelope"> </i> </span><span class="nav-label">Notification</span></a>
+				<a href="{% url 'take_attendence' %}"> <i class="fa fa-address-card"></i> <span class="nav-label">Attendence</span></a>
+				<a href="{% url 'notification' %}">  <i class="fa fa-envelope"> </i> </span><span class="nav-label">Notification</span></a>
 				<a href="{% url 'all_orders' %}"> <i class="fa fa-cart-plus"> </i> </span><span class="nav-label">Order</span></a>
 				</li>
 			</ul>
@@ -51,7 +61,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <p class="mt-4 text-center footer-text">Developed By<strong> Laka</strong> &copy; 2021 </p>
+        <p class="mt-4 text-center footer-text">Developed By<strong> Mahbuba Laka </strong> &copy; 2021 </p>
       </div>
     </div>
   </div>

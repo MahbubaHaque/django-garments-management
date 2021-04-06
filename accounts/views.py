@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import UserProfile
 from .forms import UpdateUserProfileForm
-
+from abc_garments.models import Notification
 
 def loginView(request):
     context={}
@@ -80,6 +80,7 @@ def userProfile(request,id=None):
         profile=UserProfile.objects.get(customer=user)
         context['id']=id
         context['profile']=profile
+        context['notifications']=Notification.objects.filter(user=request.user)
         return render(request,'authentication/user_profile.html',context)
 
 @login_required
