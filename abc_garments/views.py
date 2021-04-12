@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
-from .models import Product,Delivery,Query,Employee,Attendance,Notification
-from .forms import EmployeeForm,NotificationForm
+from .models import Product,Delivery,Query,Employee,Attendance,Notification, Materials, MaterialsUsed
+from .forms import EmployeeForm,NotificationForm, MaterialsForm, MaterialsUsedForm
 import string
 import random
 
@@ -50,8 +50,15 @@ def about(request):
 @login_required
 def allOrders(request):
     context={}
-    orders=Delivery.objects.all()
-    context['orders']=orders
+    if request.method=="POST":
+        from_date=request.POST["from"]
+        to_date=request.POST["to"]
+        orders=Delivery.objects.filter(created_at__range=(from_date, to_date))
+        context['orders']=orders
+    else:
+
+        orders=Delivery.objects.all()
+        context['orders']=orders
     return render(request,'admin/all_orders.html',context)
 
 @login_required
@@ -137,3 +144,60 @@ def deleteNotification(request,id=None):
     notification.delete()
     messages.success(request,"Your One notification deleted")
     return redirect('profile',id=request.user.id)
+
+
+
+@login_required
+def add_materials(request):
+    
+    if request.method == "POST":
+        forms = MaterialsForm(request.POST)
+        if forms.is_valid:
+            forms.save()
+    forms = MaterialsForm()
+    context = {
+        "form" : forms
+    }
+    return render(request,"admin/add_materials.html",context)
+
+@login_required
+def show_materials(request):
+    materials = Materials.objects.all()
+    print(len(materials))
+    context={
+        "materials" : materials
+    }
+    return render(request,"admin/show_materials.html", context)
+
+
+
+@login_required
+def add_materialsused(request):
+    
+    if request.method == "POST":
+        forms = MaterialsUsedForm(request.POST)
+        if forms.is_valid:
+            forms.save()
+    forms = MaterialsUsedForm()
+    context = {
+        "form" : forms
+    }
+    return render(request,"admin/add_materials_used.html",context)
+
+@login_required
+def show_materialsused(request):
+    materialsused = MaterialsUsed.objects.all()
+    
+    context={
+        "materials" : materialsused
+    }
+    return render(request,"admin/show_materials_used.html", context)
+
+
+@login_required
+def toggleDeliveryStatus(request,id=None):
+    order=Delivery.objects.get(pk=id)
+    order.is_delivered=(False if order.is_delivered else True)
+    order.save()
+    messages.warning(request,"This Order delivery status changed successfully")
+    return redirect('all_orders')

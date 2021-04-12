@@ -27,14 +27,15 @@
         {% endfor %}
       {% endif %}
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-8 offset-md-3">
                 <div class="nav-bar">
-                    <ul class="mt-5">
+                    <ul class="mt-6">
                         <li><a href="{% url 'home'%}">Home</a></li>
                         <li><a href="{% url 'products' %}">Products</a></li>
                         <li><a href="{% url 'about' %}">About Us</a></li>
                         {% if user.is_authenticated %}
                         <li><strong><a href="{% url 'profile' user.id%}"><i class="fa fa-user"></i>{{user.username}}</a></strong></li>
+                        <li><a href="{% url 'change_password' %}"><i class="fas fa-sign-out-alt"></i>Change Password</a></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                         {%else %}
                         <li><a href="{% url 'login' %}">Login</a></li>

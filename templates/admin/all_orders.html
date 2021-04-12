@@ -5,15 +5,7 @@
 {% endblock CSS%}
 {% block content %}
 <div class="container">
-    {% if messages %}
-    
-        {% for message in messages %}
 
-        <div class="alert alert-success text-center messages" role="alert">
-            {{ message }}
-        </div>
-        {% endfor %}
-    {% endif %}
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -23,6 +15,23 @@
                     </div>
                 </div>
             </div>
+            <form class="form-group" method="post">
+                {% csrf_token %}
+                <div class="form-group row">
+                    
+                    <div class="col-md-4">
+                        <label for="example-date-input" class="col-2 col-form-label">From</label>
+                        <input class="form-control" type="date" name="from" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="example-date-input" class="col-2 col-form-label">To</label>
+                        <input class="form-control" type="date" name="to" required>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info mt-4">Submit</button>
+                    </div>
+                </div>
+            </form>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -31,6 +40,7 @@
                         <th>Owner</th>
                         <th>Quantity</th>
                         <th>Bill</th>
+                        <th>Deliverd/Pending</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +52,17 @@
                         <td>{{order.delivery_owner.username}}</td>
                         <td>{{order.quantity}}</td>
                         <td>$ {{order.total_bill}}</td>
+                        <td>
+                            {% if order.is_delivered %}
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#toggleDeliveryModal">
+                                Undo delivery
+                            </button>
+                            {% else %}
+                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#toggleDeliveryModal">
+                                    Send delivery
+                                </button>
+                            {% endif %}
+                        </td>      
                         <td>
                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Delete
@@ -62,6 +83,24 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancle</button>
                                 <a href="{% url 'delete_order' order.id %}"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="toggleDeliveryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Toggle Delivery status</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Are You sure to change delivery status for this order ?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                                <a href="{% url 'toggle_delivery_status' order.id %}"><button type="button" class="btn btn-sm btn-danger">toggle</button></a>
                             </div>
                         </div>
                         </div>

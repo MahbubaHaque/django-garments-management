@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Employee,Notification
+from .models import Employee,Notification, Materials, MaterialsUsed
 
 class EmployeeForm(forms.ModelForm):
 
@@ -27,3 +27,20 @@ class NotificationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['user'].widget.attrs.update({'class': 'form-control'})
         self.fields['message'].widget.attrs.update({'class': 'form-control','placeholder': 'write message'})
+
+
+class MaterialsForm(forms.ModelForm):
+
+    class Meta:
+        model=Materials
+        fields= '__all__'
+
+    def clean(self):
+        return super(MaterialsForm, self).clean()
+
+
+class MaterialsUsedForm(forms.ModelForm):
+
+    class Meta:
+        model=MaterialsUsed
+        fields= '__all__'
