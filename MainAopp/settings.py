@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'abc_garments',
     #third party apps
     'django_cleanup',
+    'crispy_forms',
     
 ]
 
